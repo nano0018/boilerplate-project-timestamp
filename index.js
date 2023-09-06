@@ -20,9 +20,16 @@ app.get("/", function (req, res) {
 });
 
 // Endpoint for Timestamp Microservice
+app.get("/api", function (req, res) {
+	res.json({
+		unix: new Date().getTime(),
+		utc: new Date().toUTCString(),
+	});
+});
+
 app.get("/api/:time", function (req, res) {
 	const time = req.params.time;
-  const timeObject = timeFormatter(time)
+	const timeObject = timeFormatter(time);
 	res.json(timeObject);
 });
 
